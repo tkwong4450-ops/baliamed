@@ -3,999 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TK & Dominic — Bali Active & Chill Expedition 2026</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Google Fonts (Inter & Plus Jakarta Sans) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        ocean: {
-                            900: '#060E1A',
-                            800: '#0B192C',
-                            700: '#132A4A',
-                            600: '#1E3E6A',
-                        },
-                        cyanAccent: '#00F2FE',
-                        tealAccent: '#4FACFE',
-                        coralAccent: '#FF7E5F',
-                        sunsetGold: '#FEB47B',
-                        volcanicSand: '#12151C',
-                        volcanicCard: '#1A1E29',
-                    },
-                    backgroundImage: {
-                        'hero-gradient': 'radial-gradient(circle at top right, rgba(0,242,254,0.15), transparent 50%), radial-gradient(circle at bottom left, rgba(255,126,95,0.12), transparent 50%)',
-                        'glow-cyan': 'radial-gradient(circle, rgba(0,242,254,0.25) 0%, rgba(0,0,0,0) 70%)',
-                        'sunset-gradient': 'linear-gradient(135deg, #FF7E5F 0%, #FEB47B 100%)',
-                        'cyan-gradient': 'linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%)',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Bali 2026 | Amed Expedition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* Custom scrollbar & glassmorphism */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        :root {
+            --bg-color: #0F172A;
+            --card-bg: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-cyan: #06B6D4;
+            --accent-coral: #F43F5E;
+            --accent-shared: #10B981;
+            --accent-chill: #F59E0B;
         }
-        ::-webkit-scrollbar-track {
-            background: #0B192C;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #1E3E6A;
-            border-radius: 4px;
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00F2FE;
+
+        .app-container {
+            width: 100%;
+            max-width: 480px; /* Mobile width constraint for desktop viewing */
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 40px;
         }
-        .glass-card {
-            background: rgba(26, 30, 41, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+
+        /* Header & Countdown */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            padding: 40px 20px 30px;
+            border-bottom: 2px solid var(--accent-cyan);
+            text-align: center;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.1);
         }
-        .glass-card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
         }
-        .glass-card-hover:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 10px 30px -10px rgba(0, 242, 254, 0.2);
+
+        .hero p {
+            color: var(--accent-cyan);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
         }
-        .glow-text {
-            text-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            border-radius: 12px;
+            width: 70px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--accent-coral);
+        }
+
+        .time-box label {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Filter Navigation */
+        .filters {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 20px;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .filters::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+        }
+
+        /* Itinerary Timeline */
+        .timeline {
+            padding: 0 20px;
+        }
+
+        .day-header {
+            font-size: 18px;
+            font-weight: 800;
+            margin: 25px 0 15px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-cyan);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .event-card[data-type="shared"] { border-left-color: var(--accent-shared); }
+        .event-card[data-type="sports"] { border-left-color: var(--accent-cyan); }
+        .event-card[data-type="chill"] { border-left-color: var(--accent-chill); }
+
+        .event-time {
+            font-size: 12px;
+            color: var(--accent-coral);
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .event-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .event-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .tag.shared { background: rgba(16, 185, 129, 0.15); color: var(--accent-shared); }
+        .tag.sports { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
+        .tag.chill { background: rgba(245, 158, 11, 0.15); color: var(--accent-chill); }
+
+        /* Dominic's Options Box inside Sports Cards */
+        .alt-option {
+            margin-top: 12px;
+            padding: 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            border-left: 2px solid var(--accent-chill);
+        }
+        
+        .alt-option strong {
+            color: var(--accent-chill);
+            font-size: 11px;
+            text-transform: uppercase;
         }
     </style>
 </head>
-<body class="bg-ocean-900 text-slate-200 font-sans antialiased min-h-screen selection:bg-cyanAccent selection:text-ocean-900 bg-hero-gradient bg-fixed">
+<body>
 
-    <!-- TOP NAV BAR -->
-    <nav class="sticky top-0 z-50 glass-card border-b border-slate-800/80 px-4 lg:px-8 py-3">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-cyan-gradient p-0.5 flex items-center justify-center shadow-lg shadow-cyanAccent/20">
-                    <div class="w-full h-full bg-ocean-900 rounded-[10px] flex items-center justify-center">
-                        <i data-lucide="compass" class="w-5 h-5 text-cyanAccent"></i>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-xs uppercase tracking-widest text-cyanAccent font-semibold block">Amed & Tulamben</span>
-                    <h1 class="text-lg font-bold text-white tracking-tight leading-none">TK & Dominic's Bali Journey</h1>
-                </div>
-            </div>
-
-            <!-- Quick Action Buttons -->
-            <div class="flex items-center space-x-2 sm:space-x-4">
-                <button onclick="copyItinerarySummary()" class="flex items-center space-x-2 bg-slate-800/80 hover:bg-slate-700/80 text-xs sm:text-sm text-slate-200 px-3 py-2 rounded-xl border border-slate-700 transition">
-                    <i data-lucide="share-2" class="w-4 h-4 text-cyanAccent"></i>
-                    <span class="hidden sm:inline">Share Plan</span>
-                </button>
-                <a href="#countdown" class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-tealAccent to-cyanAccent text-ocean-900 text-xs font-bold px-3 py-2 rounded-xl hover:opacity-90 transition">
-                    <i data-lucide="clock" class="w-4 h-4"></i>
-                    <span>Countdown</span>
-                </a>
-            </div>
+<div class="app-container">
+    <!-- Hero / Countdown -->
+    <div class="hero">
+        <h1>Bali Expedition</h1>
+        <p>Amed Coast • Nov 1 - 6</p>
+        <div class="countdown-container" id="countdown">
+            <div class="time-box"><span id="days">00</span><label>Days</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Hours</label></div>
+            <div class="time-box"><span id="mins">00</span><label>Mins</label></div>
         </div>
-    </nav>
-
-    <!-- HERO / LOGISTICS BANNER -->
-    <header class="relative overflow-hidden pt-8 pb-12 px-4 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <!-- Main Grid Header -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-                
-                <!-- Left Banner Card -->
-                <div class="lg:col-span-8 glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col justify-between border-slate-800">
-                    <div class="absolute -right-12 -top-12 w-64 h-64 bg-cyanAccent/10 rounded-full blur-3xl pointer-events-none"></div>
-                    <div class="absolute -left-12 -bottom-12 w-64 h-64 bg-coralAccent/10 rounded-full blur-3xl pointer-events-none"></div>
-
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/20 flex items-center gap-1.5">
-                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Nov 1 – Nov 6, 2026
-                            </span>
-                            <span class="px-3 py-1 rounded-full text-xs font-semibold bg-coralAccent/10 text-coralAccent border border-coralAccent/20 flex items-center gap-1.5">
-                                <i data-lucide="zap" class="w-3.5 h-3.5"></i> High-Volume Sports + Relaxed Chill
-                            </span>
-                        </div>
-
-                        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-                            The Balanced <span class="bg-gradient-to-r from-cyanAccent via-tealAccent to-sunsetGold bg-clip-text text-transparent">Athlete & Lifestyle</span> Itinerary
-                        </h2>
-                        <p class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed mb-6">
-                            Tailored for TK's intense sport blocks (Padel, Freediving, Scuba Wrecks & Sunset Volleyball) perfectly synced with Dominic's laid-back luxury coastal relaxation in Amed & Tulamben.
-                        </p>
-                    </div>
-
-                    <!-- Logistics Snippets -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-slate-800/80">
-                        <div class="flex items-center space-x-3 bg-ocean-900/60 p-3 rounded-2xl border border-slate-800">
-                            <div class="p-2.5 bg-blue-500/10 rounded-xl text-blue-400">
-                                <i data-lucide="plane-landing" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Arrival Flight</span>
-                                <span class="text-xs sm:text-sm font-semibold text-white">CX783 • Nov 1 @ 04:15 PM</span>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center space-x-3 bg-ocean-900/60 p-3 rounded-2xl border border-slate-800">
-                            <div class="p-2.5 bg-coralAccent/10 rounded-xl text-coralAccent">
-                                <i data-lucide="plane-takeoff" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider block">Departure Flight</span>
-                                <span class="text-xs sm:text-sm font-semibold text-white">CX784 • Nov 6 @ 04:15 PM</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Countdown & Status Card -->
-                <div id="countdown" class="lg:col-span-4 glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between border-slate-800 relative bg-gradient-to-br from-volcanicCard to-ocean-800">
-                    <div>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Expedition Countdown</span>
-                            <span class="w-2 h-2 rounded-full bg-cyanAccent animate-ping"></span>
-                        </div>
-                        
-                        <div class="grid grid-cols-4 gap-2 text-center my-4">
-                            <div class="bg-ocean-900/80 p-2 sm:p-3 rounded-2xl border border-slate-800">
-                                <span id="cd-days" class="text-2xl sm:text-3xl font-black text-cyanAccent block">00</span>
-                                <span class="text-[10px] uppercase font-medium text-slate-400">Days</span>
-                            </div>
-                            <div class="bg-ocean-900/80 p-2 sm:p-3 rounded-2xl border border-slate-800">
-                                <span id="cd-hours" class="text-2xl sm:text-3xl font-black text-white block">00</span>
-                                <span class="text-[10px] uppercase font-medium text-slate-400">Hours</span>
-                            </div>
-                            <div class="bg-ocean-900/80 p-2 sm:p-3 rounded-2xl border border-slate-800">
-                                <span id="cd-mins" class="text-2xl sm:text-3xl font-black text-white block">00</span>
-                                <span class="text-[10px] uppercase font-medium text-slate-400">Mins</span>
-                            </div>
-                            <div class="bg-ocean-900/80 p-2 sm:p-3 rounded-2xl border border-slate-800">
-                                <span id="cd-secs" class="text-2xl sm:text-3xl font-black text-coralAccent block">00</span>
-                                <span class="text-[10px] uppercase font-medium text-slate-400">Secs</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-4 pt-4 border-t border-slate-800">
-                        <div class="flex items-center justify-between text-xs text-slate-300 mb-1">
-                            <span>Basecamp Location</span>
-                            <span class="font-semibold text-cyanAccent">Jl. I Ketut Natih, Amed</span>
-                        </div>
-                        <div class="flex items-center justify-between text-xs text-slate-400">
-                            <span>Primary Hubs</span>
-                            <span>Jemeluk Bay & Lipah Beach</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT AREA -->
-    <main class="max-w-7xl mx-auto px-4 lg:px-8 space-y-16 pb-20">
-
-        <!-- SECTION 1: TRIP HIGHLIGHTS SPOTLIGHT -->
-        <section>
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
-                <div>
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-cyanAccent">Core Attractions</span>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Trip Highlights & Signature Spots</h3>
-                </div>
-                <p class="text-xs text-slate-400">Click cards for key activity details</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Highlight 1: USAT Liberty -->
-                <div class="glass-card glass-card-hover rounded-3xl p-6 relative overflow-hidden group flex flex-col justify-between border-slate-800">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/60 to-transparent z-10"></div>
-                    <div class="h-32 -mx-6 -mt-6 bg-cover bg-center transition duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80');"></div>
-                    
-                    <div class="relative z-20 pt-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold bg-cyanAccent/20 text-cyanAccent mb-2 border border-cyanAccent/30">Depth: 4m - 30m</span>
-                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-cyanAccent transition">USAT Liberty Wreck</h4>
-                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                                WWII American cargo ship torpedoed in 1942, pushed off Tulamben beach into the ocean by Mount Agung's 1963 eruption. Now a teeming artificial reef.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-                            <span><i data-lucide="anchor" class="w-3.5 h-3.5 inline mr-1 text-cyanAccent"></i> Tulamben</span>
-                            <span class="text-slate-300 font-medium">TK Scuba / Dom Chill</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Highlight 2: Coral Padel Amed -->
-                <div class="glass-card glass-card-hover rounded-3xl p-6 relative overflow-hidden group flex flex-col justify-between border-slate-800">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/60 to-transparent z-10"></div>
-                    <div class="h-32 -mx-6 -mt-6 bg-cover bg-center transition duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=600&q=80');"></div>
-                    
-                    <div class="relative z-20 pt-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold bg-coralAccent/20 text-coralAccent mb-2 border border-coralAccent/30">Playtomic App</span>
-                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-coralAccent transition">Coral Padel Amed</h4>
-                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                                Modern open-air padel court setup nestled in lush tropical surroundings. Fast-paced rotations for TK while Dominic enjoys the court's breezy lounge café.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-                            <span><i data-lucide="activity" class="w-3.5 h-3.5 inline mr-1 text-coralAccent"></i> Amed Central</span>
-                            <span class="text-slate-300 font-medium">Padel & Drinks</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Highlight 3: Lipah Beach Volleyball -->
-                <div class="glass-card glass-card-hover rounded-3xl p-6 relative overflow-hidden group flex flex-col justify-between border-slate-800">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/60 to-transparent z-10"></div>
-                    <div class="h-32 -mx-6 -mt-6 bg-cover bg-center transition duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?auto=format&fit=crop&w=600&q=80');"></div>
-                    
-                    <div class="relative z-20 pt-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold bg-sunsetGold/20 text-sunsetGold mb-2 border border-sunsetGold/30">Daily 5:00 PM</span>
-                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-sunsetGold transition">Lipah Beach Volleyball</h4>
-                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                                Vibrant pickup games on flat black volcanic sand. High energy action on court with beachfront warungs right beside the net serving ice-cold Bintangs.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-                            <span><i data-lucide="sun" class="w-3.5 h-3.5 inline mr-1 text-sunsetGold"></i> Lipah Beach</span>
-                            <span class="text-slate-300 font-medium">BVB & Bintangs</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Highlight 4: Mt. Agung Sunset -->
-                <div class="glass-card glass-card-hover rounded-3xl p-6 relative overflow-hidden group flex flex-col justify-between border-slate-800">
-                    <div class="absolute inset-0 bg-gradient-to-t from-ocean-900 via-ocean-900/60 to-transparent z-10"></div>
-                    <div class="h-32 -mx-6 -mt-6 bg-cover bg-center transition duration-500 group-hover:scale-105" style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80');"></div>
-                    
-                    <div class="relative z-20 pt-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <span class="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold bg-purple-500/20 text-purple-300 mb-2 border border-purple-500/30">Panoramic Lookout</span>
-                            <h4 class="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition">Mt. Agung Sunset Point</h4>
-                            <p class="text-xs text-slate-300 line-clamp-3 leading-relaxed">
-                                Epic cliffside views watching the golden sun drop directly behind the iconic silhouette of Bali's sacred volcano Mount Agung right over the ocean.
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
-                            <span><i data-lucide="eye" class="w-3.5 h-3.5 inline mr-1 text-purple-400"></i> Sunset Point</span>
-                            <span class="text-slate-300 font-medium">👥 Big Shared Outing</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 2: INTERACTIVE ITINERARY TIMELINE -->
-        <section id="itinerary">
-            <!-- Header & Filter Bar -->
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-8 gap-4 glass-card p-6 rounded-3xl border-slate-800">
-                <div>
-                    <span class="text-xs font-extrabold uppercase tracking-widest text-cyanAccent">Interactive Master Plan</span>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white">Day-by-Day Itinerary Schedule</h3>
-                </div>
-
-                <!-- Event Category Filter Buttons -->
-                <div class="flex flex-wrap items-center gap-2 bg-ocean-900/80 p-1.5 rounded-2xl border border-slate-800">
-                    <button onclick="setFilter('all')" id="filter-all" class="filter-btn px-3.5 py-2 rounded-xl text-xs font-bold transition bg-cyanAccent text-ocean-900 shadow">
-                        All Events
-                    </button>
-                    <button onclick="setFilter('shared')" id="filter-shared" class="filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">
-                        👥 Shared Only
-                    </button>
-                    <button onclick="setFilter('sports')" id="filter-sports" class="filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">
-                        ⚡ TK's Sports
-                    </button>
-                    <button onclick="setFilter('chill')" id="filter-chill" class="filter-btn px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition">
-                        🌴 Dominic's Chill
-                    </button>
-                </div>
-            </div>
-
-            <!-- Day Selector Tabs -->
-            <div class="flex items-center space-x-2 overflow-x-auto pb-4 mb-6 scrollbar-none" id="day-tabs">
-                <!-- Day buttons populated dynamically via JS -->
-            </div>
-
-            <!-- Schedule Card Container -->
-            <div id="schedule-container" class="space-y-4">
-                <!-- Event cards populated dynamically via JS -->
-            </div>
-        </section>
-
-        <!-- SECTION 3: PACKING & GEAR CHECKLIST -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            <!-- TK's Sports Gear -->
-            <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center space-x-3">
-                            <div class="p-3 bg-cyanAccent/10 rounded-2xl text-cyanAccent border border-cyanAccent/20">
-                                <i data-lucide="zap" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-white">TK's Gear & Athletic Kit</h4>
-                                <p class="text-xs text-slate-400">High-performance sport essentials</p>
-                            </div>
-                        </div>
-                        <span id="tk-progress" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-800 text-cyanAccent">0/0 Packed</span>
-                    </div>
-
-                    <!-- Checklist Items -->
-                    <div id="tk-checklist" class="space-y-3">
-                        <!-- Items rendered via JS -->
-                    </div>
-                </div>
-
-                <!-- Add item box -->
-                <div class="mt-6 pt-4 border-t border-slate-800 flex gap-2">
-                    <input type="text" id="tk-new-item" placeholder="Add extra item for TK..." class="bg-ocean-900 border border-slate-700 text-xs text-white rounded-xl px-3 py-2.5 flex-1 focus:outline-none focus:border-cyanAccent">
-                    <button onclick="addChecklistItem('tk')" class="bg-cyanAccent text-ocean-900 px-4 py-2.5 rounded-xl font-bold text-xs hover:opacity-90 transition">Add</button>
-                </div>
-            </div>
-
-            <!-- Dominic's Chill & Lifestyle Gear -->
-            <div class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center justify-between mb-6">
-                        <div class="flex items-center space-x-3">
-                            <div class="p-3 bg-coralAccent/10 rounded-2xl text-coralAccent border border-coralAccent/20">
-                                <i data-lucide="palmtree" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-white">Dominic's Chill & Resort Kit</h4>
-                                <p class="text-xs text-slate-400">Lifestyle & beach relaxation essentials</p>
-                            </div>
-                        </div>
-                        <span id="dom-progress" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-800 text-coralAccent">0/0 Packed</span>
-                    </div>
-
-                    <!-- Checklist Items -->
-                    <div id="dom-checklist" class="space-y-3">
-                        <!-- Items rendered via JS -->
-                    </div>
-                </div>
-
-                <!-- Add item box -->
-                <div class="mt-6 pt-4 border-t border-slate-800 flex gap-2">
-                    <input type="text" id="dom-new-item" placeholder="Add extra item for Dominic..." class="bg-ocean-900 border border-slate-700 text-xs text-white rounded-xl px-3 py-2.5 flex-1 focus:outline-none focus:border-coralAccent">
-                    <button onclick="addChecklistItem('dom')" class="bg-coralAccent text-ocean-900 px-4 py-2.5 rounded-xl font-bold text-xs hover:opacity-90 transition">Add</button>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- SECTION 4: USEFUL LOCAL INFORMATION HUB -->
-        <section class="glass-card rounded-3xl p-6 sm:p-8 border-slate-800">
-            <div class="mb-6">
-                <span class="text-xs font-extrabold uppercase tracking-widest text-cyanAccent">Travel Toolkit</span>
-                <h3 class="text-2xl font-bold text-white">Amed & Tulamben Quick Guide</h3>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
-                <div class="bg-ocean-900/70 p-5 rounded-2xl border border-slate-800/80">
-                    <div class="flex items-center space-x-2 text-cyanAccent font-bold text-sm mb-2">
-                        <i data-lucide="map-pin" class="w-4 h-4"></i>
-                        <span>Getting Around Amed</span>
-                    </div>
-                    <p class="leading-relaxed">
-                        Scooter rental is ideal for quick runs along the coastal strip (Jl. I Ketut Natih). Drivers or private Jukung outrigger boats can be arranged directly from your beach warungs or hotel reception.
-                    </p>
-                </div>
-
-                <div class="bg-ocean-900/70 p-5 rounded-2xl border border-slate-800/80">
-                    <div class="flex items-center space-x-2 text-coralAccent font-bold text-sm mb-2">
-                        <i data-lucide="shield-alert" class="w-4 h-4"></i>
-                        <span>No-Fly & Off-Gassing Rule</span>
-                    </div>
-                    <p class="leading-relaxed">
-                        <strong>Thursday, Nov 5</strong> is strictly your no-diving window to safely off-gas nitrogen before flying home on Cathay CX784 on Nov 6 at 4:15 PM. Perfect day for maximum Padel & Volleyball!
-                    </p>
-                </div>
-
-                <div class="bg-ocean-900/70 p-5 rounded-2xl border border-slate-800/80">
-                    <div class="flex items-center space-x-2 text-sunsetGold font-bold text-sm mb-2">
-                        <i data-lucide="utensils" class="w-4 h-4"></i>
-                        <span>Food & Drinks Vibe</span>
-                    </div>
-                    <p class="leading-relaxed">
-                        Enjoy grilled mahi-mahi at beachfront warungs, fresh coconut water after court games, and cliffside sunset cocktails overlooking Mount Agung.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-t border-slate-800/80 bg-ocean-900/90 py-8 px-4 text-center text-xs text-slate-500">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <i data-lucide="compass" class="w-4 h-4 text-cyanAccent"></i>
-                <span class="font-semibold text-slate-300">TK & Dominic • Bali Expedition 2026</span>
-            </div>
-            <p>Designed for High-Volume Sports & Curated Relaxation • Amed & Tulamben</p>
-        </div>
-    </footer>
-
-    <!-- TOAST NOTIFICATION BOX -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-cyanAccent text-ocean-900 font-bold px-4 py-3 rounded-2xl shadow-2xl transition transform translate-y-20 opacity-0 flex items-center space-x-2 text-xs">
-        <i data-lucide="check-circle" class="w-4 h-4"></i>
-        <span id="toast-message">Action successful!</span>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        // DATA STRUCTURE: Days & Detailed Events
-        const itineraryData = [
-            {
-                dayId: 1,
-                dateStr: "Sun, Nov 1",
-                title: "Arrival & Coastal Chill",
-                events: [
-                    {
-                        time: "04:15 PM",
-                        type: "shared",
-                        title: "Flight CX783 Lands at DPS",
-                        desc: "Touch down at Denpasar Airport. Clear customs, pick up baggage, and meet private driver for transfer up east to Amed.",
-                        location: "Denpasar (DPS) -> Amed",
-                        icon: "plane-landing"
-                    },
-                    {
-                        time: "07:30 PM – 08:00 PM",
-                        type: "shared",
-                        title: "Check-in at Amed Accommodation",
-                        desc: "Arrive on Jl. I Ketut Natih. Settle into rooms, unpack sports gear, and refresh after the scenic drive.",
-                        location: "Jl. I Ketut Natih, Amed",
-                        icon: "key"
-                    },
-                    {
-                        time: "08:30 PM",
-                        type: "shared",
-                        title: "Late-Night Local Balinese Dinner & Drinks",
-                        desc: "Head out together along your lane for a relaxed late-night local Balinese meal and custom cocktails to unwind.",
-                        location: "Amed Coastal Strip",
-                        icon: "utensils"
-                    }
-                ]
-            },
-            {
-                dayId: 2,
-                dateStr: "Mon, Nov 2",
-                title: "Freediving Intro & Sunset Padel",
-                events: [
-                    {
-                        time: "08:30 AM – 12:30 PM",
-                        type: "sports",
-                        title: "TK: Freediving Discovery Session",
-                        desc: "Walk down to Apneista or Ocean Prana for breath-hold technique, safety briefings, and first ocean dive in Jemeluk Bay.",
-                        location: "Apneista / Ocean Prana",
-                        icon: "waves"
-                    },
-                    {
-                        time: "08:30 AM – 12:30 PM",
-                        type: "chill",
-                        title: "Dominic: Morning Sleep-in & Beachfront Cafe",
-                        desc: "Relaxed morning. Sleep in, enjoy breakfast at the guesthouse, and relax with coffee or a book at Jemeluk Bay watching outrigger boats.",
-                        location: "Jemeluk Bay Cafe",
-                        icon: "coffee"
-                    },
-                    {
-                        time: "01:00 PM – 04:30 PM",
-                        type: "shared",
-                        title: "Oceanfront Lunch & Coastal Scooter Cruise",
-                        desc: "Reconvene for a long oceanfront lunch. Rent scooters together (or take casual strolls) exploring local coves.",
-                        location: "Amed Coastline",
-                        icon: "utensils"
-                    },
-                    {
-                        time: "05:00 PM – 07:00 PM",
-                        type: "sports",
-                        title: "TK: Coral Padel Drop-in Match",
-                        desc: "Fast-paced match play at Coral Padel using Playtomic app rotation.",
-                        location: "Coral Padel Amed",
-                        icon: "zap"
-                    },
-                    {
-                        time: "05:00 PM – 07:00 PM",
-                        type: "chill",
-                        title: "Dominic: Court-side Drinks or Balinese Massage",
-                        desc: "Chill out at Coral Padel's open-air cafe watching matches or book a luxury Balinese massage nearby.",
-                        location: "Coral Padel Lounge / Local Spa",
-                        icon: "sparkles"
-                    }
-                ]
-            },
-            {
-                dayId: 3,
-                dateStr: "Tue, Nov 3",
-                title: "2-Tank Scuba Boat Dive & Beach Volleyball",
-                events: [
-                    {
-                        time: "08:30 AM – 12:30 PM",
-                        type: "sports",
-                        title: "TK: 2-Tank Jukung Scuba Dive (Bunutan & Jemeluk)",
-                        desc: "Take traditional outrigger boat (Jukung) with Ocean Tree Bali for reef diving along Bunutan Reef & Jemeluk Wall.",
-                        location: "Bunutan Reef & Jemeluk Wall",
-                        icon: "anchor"
-                    },
-                    {
-                        time: "08:30 AM – 12:30 PM",
-                        type: "chill",
-                        title: "Dominic: Outrigger Snorkeling or Cooking Class",
-                        desc: "Option to join the boat to snorkel over colorful coral directly above TK, or take a morning Balinese cooking class.",
-                        location: "Jemeluk Reef / Amed Village",
-                        icon: "sun"
-                    },
-                    {
-                        time: "01:00 PM – 04:30 PM",
-                        type: "shared",
-                        title: "Fresh Coconuts & Poolside Afternoon",
-                        desc: "Meet back for fresh coconut drinks, lunch, and a relaxed afternoon lounging by the pool.",
-                        location: "Accommodation Pool",
-                        icon: "heart"
-                    },
-                    {
-                        time: "05:00 PM – 06:30 PM",
-                        type: "sports",
-                        title: "TK: Lipah Beach Sunset Volleyball",
-                        desc: "Join daily pickup volleyball games on the flat black volcanic sand at Lipah Beach.",
-                        location: "Lipah Beach Court",
-                        icon: "volleyball"
-                    },
-                    {
-                        time: "05:00 PM – 06:30 PM",
-                        type: "chill",
-                        title: "Dominic: Beachside Bintang & Sunset Lounge",
-                        desc: "Relax comfortably with a cold Bintang at a beach warung right beside the volleyball net enjoying the breeze.",
-                        location: "Lipah Beach Warung",
-                        icon: "beer"
-                    }
-                ]
-            },
-            {
-                dayId: 4,
-                dateStr: "Wed, Nov 4",
-                title: "USAT Liberty Wreck & Mt. Agung Sunset",
-                events: [
-                    {
-                        time: "08:00 AM – 12:30 PM",
-                        type: "sports",
-                        title: "TK: Advanced Wreck Dives (USAT Liberty & Boga)",
-                        desc: "Head over to Tulamben for deep AOW dives exploring the historic WWII USAT Liberty shipwreck (4m-30m) & Boga Wreck.",
-                        location: "Tulamben Bay",
-                        icon: "ship"
-                    },
-                    {
-                        time: "08:00 AM – 12:30 PM",
-                        type: "chill",
-                        title: "Dominic: Private Home Spa / Pool Morning",
-                        desc: "Unwind with a lazy morning, book an in-room massage therapist, and enjoy quiet time at the pool.",
-                        location: "Amed Basecamp",
-                        icon: "smile"
-                    },
-                    {
-                        time: "03:30 PM – 07:00 PM",
-                        type: "shared",
-                        title: "BIG OUTING: Mt. Agung Sunset Lookout Drinks",
-                        desc: "Head up to Sunset Point cliffside lookout. Grab prime seats, order cocktails, and watch the sun drop behind Mt. Agung over the sea.",
-                        location: "Sunset Point Amed",
-                        icon: "eye"
-                    }
-                ]
-            },
-            {
-                dayId: 5,
-                dateStr: "Thu, Nov 5",
-                title: "Peak Athletics (No-Fly Window) & Fine Dining",
-                events: [
-                    {
-                        time: "08:30 AM – 10:30 AM",
-                        type: "sports",
-                        title: "TK: High-Energy Morning Padel Match",
-                        desc: "Non-diving off-gassing window. High energy competitive singles/doubles padel session at Coral Padel.",
-                        location: "Coral Padel Amed",
-                        icon: "zap"
-                    },
-                    {
-                        time: "08:30 AM – 10:30 AM",
-                        type: "chill",
-                        title: "Dominic: Boutique Cafe Hopping & Shops",
-                        desc: "Explore local artisan craft shops and boutique cafes along the main village street.",
-                        location: "Amed Village Street",
-                        icon: "shopping-bag"
-                    },
-                    {
-                        time: "11:00 AM – 04:30 PM",
-                        type: "shared",
-                        title: "Coastal Sightseeing Boat Cruise or Tirta Gangga",
-                        desc: "Charter a private boat for a scenic coastline cruise or take a driver to Tirta Gangga Water Palace.",
-                        location: "Amed Coast / Tirta Gangga",
-                        icon: "camera"
-                    },
-                    {
-                        time: "05:00 PM – 06:30 PM",
-                        type: "sports",
-                        title: "TK: Final Beach Volleyball Match Rotation",
-                        desc: "Final sunset volleyball showdown on Lipah Beach black sand.",
-                        location: "Lipah Beach Court",
-                        icon: "volleyball"
-                    },
-                    {
-                        time: "05:00 PM – 06:30 PM",
-                        type: "chill",
-                        title: "Dominic: Sunset Beach Lounging",
-                        desc: "Soak in the final golden hour on Lipah Beach with fresh fruit juices.",
-                        location: "Lipah Beach",
-                        icon: "sunset"
-                    },
-                    {
-                        time: "07:30 PM",
-                        type: "shared",
-                        title: "Celebratory Final Night Seafood Feast",
-                        desc: "Top-tier seafood grill celebration at a renowned Amed acoustic live music restaurant to close out the trip.",
-                        location: "Amed Fine Seafood Restaurant",
-                        icon: "utensils"
-                    }
-                ]
-            },
-            {
-                dayId: 6,
-                dateStr: "Fri, Nov 6",
-                title: "Farewell Breakfast & Return Flight",
-                events: [
-                    {
-                        time: "09:00 AM – 11:30 AM",
-                        type: "shared",
-                        title: "Long Leisurely Breakfast & Packing",
-                        desc: "Pack up sports equipment and enjoy a long, relaxed final breakfast along your street lane.",
-                        location: "Amed Cafe",
-                        icon: "coffee"
-                    },
-                    {
-                        time: "12:00 PM",
-                        type: "shared",
-                        title: "Checkout & Private Driver Transfer to Airport",
-                        desc: "Board private vehicle for comfortable transfer down south to Denpasar Airport.",
-                        location: "Amed -> DPS Airport",
-                        icon: "car"
-                    },
-                    {
-                        time: "04:15 PM",
-                        type: "shared",
-                        title: "Flight CX784 Departs DPS for Hong Kong",
-                        desc: "Board Cathay Pacific CX784 back home.",
-                        location: "Denpasar Airport (DPS)",
-                        icon: "plane-takeoff"
-                    }
-                ]
-            }
-        ];
+    <!-- Filters -->
+    <div class="filters">
+        <div class="filter-btn active" onclick="filterEvents('all')">All Events</div>
+        <div class="filter-btn" onclick="filterEvents('shared')">👥 Shared</div>
+        <div class="filter-btn" onclick="filterEvents('sports')">⚡ TK's Sports</div>
+        <div class="filter-btn" onclick="filterEvents('chill')">🌴 Dominic's Chill</div>
+    </div>
 
-        // PACKING CHECKLIST DATA
-        let tkChecklist = [
-            { text: "Padel Racquet & Overgrips", packed: true },
-            { text: "Dive Computer & Logbook", packed: true },
-            { text: "Freediving Mask & Snorkel", packed: false },
-            { text: "Beach Volleyball Athletic Shorts", packed: true },
-            { text: "Reef-Safe Sunscreen SPF50", packed: false },
-            { text: "Electrolyte Packets & Water Bottle", packed: false }
-        ];
+    <!-- Itinerary -->
+    <div class="timeline">
+        
+        <!-- DAY 1 -->
+        <div class="day-header">Sun, Nov 1</div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">04:15 PM</div>
+            <div class="event-title">Touchdown in Bali</div>
+            <div class="event-desc">Flight CX783 lands at DPS. Meet the private driver for the coastal drive to Amed. Check in at Jl. I Ketut Natih.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">08:00 PM</div>
+            <div class="event-title">Late-Night Chill & Dinner</div>
+            <div class="event-desc">Relaxed local Balinese dinner and custom cocktails right on the street lane to unwind.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
 
-        let domChecklist = [
-            { text: "Polarized Sunglasses & Sun Hat", packed: true },
-            { text: "E-Reader / Books for Beach Chill", packed: true },
-            { text: "Snorkeling Mask & Rashguard", packed: false },
-            { text: "Resort Wear & Casual Shirts", packed: true },
-            { text: "After-Sun Aloe Vera Gel", packed: false },
-            { text: "Noise-Canceling Headphones", packed: false }
-        ];
+        <!-- DAY 2 -->
+        <div class="day-header">Mon, Nov 2</div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">08:30 AM</div>
+            <div class="event-title">Freediving Discovery</div>
+            <div class="event-desc">Morning session at Apneista or Ocean Prana.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Sleep in, slow breakfast, or read at a beachfront cafe on Jemeluk Bay.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">01:00 PM</div>
+            <div class="event-title">Coastal Lunch & Scooter Ride</div>
+            <div class="event-desc">Oceanfront lunch followed by a casual beach stroll or scooter exploration.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">05:00 PM</div>
+            <div class="event-title">Padel Drop-in Match</div>
+            <div class="event-desc">Fast-paced games at Coral Padel Amed (booked via Playtomic).</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Watch the match from the open-air cafe, or book a Balinese massage nearby.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
 
-        // STATE VARIABLES
-        let currentDayId = 1;
-        let currentFilter = 'all';
+        <!-- DAY 3 -->
+        <div class="day-header">Tue, Nov 3</div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">08:30 AM</div>
+            <div class="event-title">2-Tank Scuba Dive</div>
+            <div class="event-desc">Jukung boat dive (Bunutan Reef & Jemeluk Wall) with Ocean Tree Bali.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Join the boat just to snorkel over the reef, or book a morning cooking class/temple tour.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">01:00 PM</div>
+            <div class="event-title">Poolside & Coconuts</div>
+            <div class="event-desc">Reconvene for lunch, fresh coconut drinks, and hanging out by the pool.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">05:00 PM</div>
+            <div class="event-title">BVB at Lipah Beach</div>
+            <div class="event-desc">Daily pickup beach volleyball games on the flat black sand.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Grab a cold Bintang at the beachfront warung directly next to the net to watch the sunset.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
 
-        // INITIALIZATION
-        window.onload = function() {
-            renderDayTabs();
-            renderSchedule();
-            renderChecklists();
-            startCountdownTimer();
-            lucide.createIcons();
-        };
+        <!-- DAY 4 -->
+        <div class="day-header">Wed, Nov 4</div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">08:00 AM</div>
+            <div class="event-title">AOW Scuba Wreck Dives</div>
+            <div class="event-desc">Deep dives at USAT Liberty Shipwreck & Boga Shipwreck in Tulamben.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Relaxing pool morning or a private local home spa session.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">03:30 PM</div>
+            <div class="event-title">Sunset Point Mount Agung</div>
+            <div class="event-desc">The Big Outing: Grab prime seats at a cliffside lookout and watch the sun drop directly behind Mount Agung.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
 
-        // RENDER DAY TABS
-        function renderDayTabs() {
-            const tabsContainer = document.getElementById('day-tabs');
-            tabsContainer.innerHTML = '';
+        <!-- DAY 5 -->
+        <div class="day-header">Thu, Nov 5 (No Diving)</div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">08:30 AM</div>
+            <div class="event-title">Morning Padel</div>
+            <div class="event-desc">High-energy session at Coral Padel.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Cafe-hopping or souvenir hunting along the local street lane.</div>
+            </div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">11:00 AM</div>
+            <div class="event-title">Tirta Gangga & Coastal Sightseeing</div>
+            <div class="event-desc">Rent an outrigger boat for a private cruise or explore the Water Palace.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">05:00 PM</div>
+            <div class="event-title">Final BVB Match</div>
+            <div class="event-desc">Last beach volleyball rotation at Lipah Beach.</div>
+            <div class="tag sports">⚡ TK's Sports</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">07:30 PM</div>
+            <div class="event-title">Premium Farewell Dinner</div>
+            <div class="event-desc">Top-tier seafood grill or acoustic live-music restaurant to close out the trip.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
 
-            itineraryData.forEach(day => {
-                const isActive = day.dayId === currentDayId;
-                const btn = document.createElement('button');
-                btn.onclick = () => selectDay(day.dayId);
-                btn.className = `flex-shrink-0 px-5 py-3 rounded-2xl text-xs font-bold transition flex flex-col items-center border ${
-                    isActive 
-                    ? 'bg-gradient-to-r from-tealAccent to-cyanAccent text-ocean-900 border-cyanAccent shadow-lg shadow-cyanAccent/20' 
-                    : 'glass-card text-slate-300 border-slate-800 hover:border-slate-700'
-                }`;
-                btn.innerHTML = `
-                    <span class="text-[10px] uppercase opacity-80">Day ${day.dayId}</span>
-                    <span class="text-sm font-extrabold">${day.dateStr}</span>
-                `;
-                tabsContainer.appendChild(btn);
-            });
-        }
+        <!-- DAY 6 -->
+        <div class="day-header">Fri, Nov 6</div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">09:00 AM</div>
+            <div class="event-title">Final Breakfast & Pack up</div>
+            <div class="event-desc">A long, premium breakfast together before getting the gear ready.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">12:00 PM</div>
+            <div class="event-title">Airport Transfer</div>
+            <div class="event-desc">Check out and take the private transfer down south to DPS Airport.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
+        <div class="event-card" data-type="shared">
+            <div class="event-time">04:15 PM</div>
+            <div class="event-title">Departure</div>
+            <div class="event-desc">Board Cathay Pacific flight CX784 back to Hong Kong.</div>
+            <div class="tag shared">👥 Shared</div>
+        </div>
 
-        // SELECT DAY
-        function selectDay(dayId) {
-            currentDayId = dayId;
-            renderDayTabs();
-            renderSchedule();
-        }
+    </div>
+</div>
 
-        // SET EVENT FILTER
-        function setFilter(filterType) {
-            currentFilter = filterType;
-            
-            // Update filter button styles
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('bg-cyanAccent', 'text-ocean-900', 'shadow');
-                btn.classList.add('text-slate-400');
-            });
+<script>
+    // Filtering Logic
+    function filterEvents(type) {
+        // Update Buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
 
-            const activeBtn = document.getElementById(`filter-${filterType}`);
-            if(activeBtn) {
-                activeBtn.classList.add('bg-cyanAccent', 'text-ocean-900', 'shadow');
-                activeBtn.classList.remove('text-slate-400');
-            }
-
-            renderSchedule();
-        }
-
-        // RENDER SCHEDULE CARDS
-        function renderSchedule() {
-            const container = document.getElementById('schedule-container');
-            container.innerHTML = '';
-
-            const currentDayObj = itineraryData.find(d => d.dayId === currentDayId);
-            if (!currentDayObj) return;
-
-            // Filter events
-            const filteredEvents = currentDayObj.events.filter(event => {
-                if (currentFilter === 'all') return true;
-                return event.type === currentFilter;
-            });
-
-            if (filteredEvents.length === 0) {
-                container.innerHTML = `
-                    <div class="glass-card rounded-2xl p-8 text-center text-slate-400 text-xs">
-                        <i data-lucide="filter" class="w-8 h-8 mx-auto text-slate-600 mb-2"></i>
-                        No events match the selected filter for this day.
-                    </div>
-                `;
-                lucide.createIcons();
-                return;
-            }
-
-            filteredEvents.forEach(event => {
-                const card = document.createElement('div');
-                
-                // Color badges according to event type
-                let typeBadge = '';
-                let borderGlow = 'border-slate-800';
-                
-                if (event.type === 'shared') {
-                    typeBadge = `<span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">👥 Shared Activity</span>`;
-                    borderGlow = 'hover:border-purple-500/40';
-                } else if (event.type === 'sports') {
-                    typeBadge = `<span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-cyanAccent/20 text-cyanAccent border border-cyanAccent/30">⚡ TK's Sports Block</span>`;
-                    borderGlow = 'hover:border-cyanAccent/40';
-                } else if (event.type === 'chill') {
-                    typeBadge = `<span class="px-2.5 py-1 rounded-md text-[10px] font-bold bg-coralAccent/20 text-coralAccent border border-coralAccent/30">🌴 Dominic's Chill Block</span>`;
-                    borderGlow = 'hover:border-coralAccent/40';
-                }
-
-                card.className = `glass-card glass-card-hover rounded-2xl p-5 border ${borderGlow} transition`;
-                card.innerHTML = `
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-xs font-bold text-slate-300 bg-ocean-900 px-3 py-1.5 rounded-xl border border-slate-800 flex items-center gap-1.5">
-                                <i data-lucide="clock" class="w-3.5 h-3.5 text-cyanAccent"></i> ${event.time}
-                            </span>
-                            ${typeBadge}
-                        </div>
-                        <span class="text-[11px] text-slate-400 flex items-center gap-1">
-                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-500"></i> ${event.location}
-                        </span>
-                    </div>
-
-                    <h4 class="text-lg font-bold text-white mb-1.5">${event.title}</h4>
-                    <p class="text-xs text-slate-300 leading-relaxed">${event.desc}</p>
-                `;
-
-                container.appendChild(card);
-            });
-
-            lucide.createIcons();
-        }
-
-        // RENDER PACKING CHECKLISTS
-        function renderChecklists() {
-            // TK Checklist
-            const tkContainer = document.getElementById('tk-checklist');
-            tkContainer.innerHTML = '';
-            let tkPackedCount = 0;
-
-            tkChecklist.forEach((item, index) => {
-                if (item.packed) tkPackedCount++;
-                const div = document.createElement('div');
-                div.className = `flex items-center justify-between p-3 rounded-xl bg-ocean-900/60 border ${item.packed ? 'border-cyanAccent/30 text-slate-400 line-through' : 'border-slate-800 text-slate-200'}`;
-                div.innerHTML = `
-                    <label class="flex items-center space-x-3 cursor-pointer text-xs flex-1">
-                        <input type="checkbox" ${item.packed ? 'checked' : ''} onchange="toggleCheck('tk', ${index})" class="w-4 h-4 rounded text-cyanAccent focus:ring-0 bg-ocean-800 border-slate-700">
-                        <span>${item.text}</span>
-                    </label>
-                    <button onclick="removeChecklistItem('tk', ${index})" class="text-slate-600 hover:text-red-400 p-1">
-                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                    </button>
-                `;
-                tkContainer.appendChild(div);
-            });
-            document.getElementById('tk-progress').innerText = `${tkPackedCount}/${tkChecklist.length} Packed`;
-
-            // Dominic Checklist
-            const domContainer = document.getElementById('dom-checklist');
-            domContainer.innerHTML = '';
-            let domPackedCount = 0;
-
-            domChecklist.forEach((item, index) => {
-                if (item.packed) domPackedCount++;
-                const div = document.createElement('div');
-                div.className = `flex items-center justify-between p-3 rounded-xl bg-ocean-900/60 border ${item.packed ? 'border-coralAccent/30 text-slate-400 line-through' : 'border-slate-800 text-slate-200'}`;
-                div.innerHTML = `
-                    <label class="flex items-center space-x-3 cursor-pointer text-xs flex-1">
-                        <input type="checkbox" ${item.packed ? 'checked' : ''} onchange="toggleCheck('dom', ${index})" class="w-4 h-4 rounded text-coralAccent focus:ring-0 bg-ocean-800 border-slate-700">
-                        <span>${item.text}</span>
-                    </label>
-                    <button onclick="removeChecklistItem('dom', ${index})" class="text-slate-600 hover:text-red-400 p-1">
-                        <i data-lucide="x" class="w-3.5 h-3.5"></i>
-                    </button>
-                `;
-                domContainer.appendChild(div);
-            });
-            document.getElementById('dom-progress').innerText = `${domPackedCount}/${domChecklist.length} Packed`;
-
-            lucide.createIcons();
-        }
-
-        // TOGGLE CHECKLIST ITEM
-        function toggleCheck(person, index) {
-            if (person === 'tk') tkChecklist[index].packed = !tkChecklist[index].packed;
-            else domChecklist[index].packed = !domChecklist[index].packed;
-            renderChecklists();
-        }
-
-        // ADD CHECKLIST ITEM
-        function addChecklistItem(person) {
-            const inputId = person === 'tk' ? 'tk-new-item' : 'dom-new-item';
-            const input = document.getElementById(inputId);
-            const val = input.value.trim();
-            if(!val) return;
-
-            if (person === 'tk') tkChecklist.push({ text: val, packed: false });
-            else domChecklist.push({ text: val, packed: false });
-
-            input.value = '';
-            renderChecklists();
-            showToast("Item added to packing list!");
-        }
-
-        // REMOVE CHECKLIST ITEM
-        function removeChecklistItem(person, index) {
-            if (person === 'tk') tkChecklist.splice(index, 1);
-            else domChecklist.splice(index, 1);
-            renderChecklists();
-        }
-
-        // COUNTDOWN TIMER TO NOV 1, 2026 16:15 DPS LANDING
-        function startCountdownTimer() {
-            const targetDate = new Date("November 1, 2026 16:15:00 GMT+0800").getTime();
-
-            function updateTimer() {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    document.getElementById('cd-days').innerText = "00";
-                    document.getElementById('cd-hours').innerText = "00";
-                    document.getElementById('cd-mins').innerText = "00";
-                    document.getElementById('cd-secs').innerText = "00";
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('cd-mins').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('cd-secs').innerText = String(seconds).padStart(2, '0');
-            }
-
-            updateTimer();
-            setInterval(updateTimer, 1000);
-        }
-
-        // SHARE SUMMARY FUNCTION
-        function copyItinerarySummary() {
-            const summaryText = `🌴 TK & Dominic's Bali Active & Chill Expedition (Nov 1 - Nov 6, 2026)\n\n📍 Basecamp: Amed & Tulamben, Bali\n✈️ Flights: CX783 (Arr Nov 1 @ 4:15PM) | CX784 (Dep Nov 6 @ 4:15PM)\n⚡ Highlights: USAT Liberty Shipwreck Dive, Coral Padel Amed, Lipah Beach Volleyball & Mt. Agung Sunset Views!`;
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(summaryText);
+        // Filter Cards
+        const cards = document.querySelectorAll('.event-card');
+        const headers = document.querySelectorAll('.day-header');
+        
+        cards.forEach(card => {
+            if (type === 'all' || card.getAttribute('data-type') === type) {
+                card.style.display = 'block';
+            } else if (type === 'chill' && card.querySelector('.alt-option')) {
+                // Show sports cards if they have a chill option for Dominic
+                card.style.display = 'block';
             } else {
-                const textarea = document.createElement('textarea');
-                textarea.value = summaryText;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
+                card.style.display = 'none';
             }
+        });
+    }
 
-            showToast("Itinerary summary copied to clipboard!");
+    // Countdown Logic (Target: Nov 1, 2026, 16:15 Bali Time)
+    const countDownDate = new Date("Nov 1, 2026 16:15:00").getTime();
+
+    const x = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        document.getElementById("days").innerHTML = days < 10 ? '0' + days : days;
+        document.getElementById("hours").innerHTML = hours < 10 ? '0' + hours : hours;
+        document.getElementById("mins").innerHTML = minutes < 10 ? '0' + minutes : minutes;
+
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "HAVE A GREAT TRIP!";
+            document.getElementById("countdown").style.color = "var(--accent-cyan)";
+            document.getElementById("countdown").style.fontWeight = "800";
         }
+    }, 1000);
+</script>
 
-        // TOAST NOTIFICATION HELPERS
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
