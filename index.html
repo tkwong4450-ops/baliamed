@@ -16,6 +16,7 @@
             --accent-shared: #10B981;
             --accent-chill: #F59E0B;
             --cost-green: #34D399;
+            --transport-purple: #A78BFA;
         }
 
         * {
@@ -164,6 +165,7 @@
         .event-card[data-type="shared"] { border-left-color: var(--accent-shared); }
         .event-card[data-type="sports"] { border-left-color: var(--accent-cyan); }
         .event-card[data-type="chill"] { border-left-color: var(--accent-chill); }
+        .event-card[data-type="food"] { border-left-color: var(--accent-coral); }
 
         .event-time {
             font-size: 12px;
@@ -184,6 +186,17 @@
             font-size: 13px;
             color: var(--text-muted);
             line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .dive-intro {
+            font-size: 12px;
+            color: #E2E8F0;
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 2px solid var(--accent-cyan);
+            margin-bottom: 10px;
         }
 
         /* Tags */
@@ -212,6 +225,12 @@
             background: rgba(52, 211, 153, 0.15); 
             color: var(--cost-green); 
             border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        
+        .tag.transport {
+            background: rgba(167, 139, 250, 0.15);
+            color: var(--transport-purple);
+            border: 1px solid rgba(167, 139, 250, 0.3);
         }
 
         /* Dominic's Options Box inside Sports Cards */
@@ -246,143 +265,156 @@
 
     <!-- Filters -->
     <div class="filters">
-        <div class="filter-btn active" onclick="filterEvents('all')">All Events</div>
+        <div class="filter-btn active" onclick="filterEvents('all')">All</div>
+        <div class="filter-btn" onclick="filterEvents('sports')">⚡ Sports & Dives</div>
         <div class="filter-btn" onclick="filterEvents('shared')">👥 Shared</div>
-        <div class="filter-btn" onclick="filterEvents('sports')">⚡ TK's Sports</div>
-        <div class="filter-btn" onclick="filterEvents('chill')">🌴 Dominic's Chill</div>
+        <div class="filter-btn" onclick="filterEvents('food')">🍽️ F&B Info</div>
     </div>
 
     <!-- Itinerary -->
     <div class="timeline">
         
+        <!-- FOOD & FREE TIME GUIDE -->
+        <div class="day-header">🍽️ Local F&B & Free Time Guide</div>
+        <div class="event-card" data-type="food">
+            <div class="event-title">Traditional Indonesian Eats 🍛</div>
+            <div class="event-desc">
+                <strong>1. Nasi Campur (Mixed Rice):</strong> Traditional Balinese dish with rice, satay, sambal, veggies & egg. Try it at <em>Warung Enak</em>. <br>
+                <strong>2. Seafood BBQ:</strong> Fresh caught Mahi-Mahi grilled on coconut husks at Jemeluk Bay. Served with spicy <em>Sambal Matah</em>. <br>
+                <strong>3. Mie Goreng / Nasi Goreng:</strong> Classic fried noodles/rice. Found at almost every local Warung.
+            </div>
+            <div class="tags-wrapper">
+                <div class="tag cost">💰 ~HKD 30-50 / pax (Warungs)</div>
+                <div class="tag cost">💰 ~HKD 80-120 / pax (Seafood)</div>
+            </div>
+        </div>
+        
+        <div class="event-card" data-type="food">
+            <div class="event-title">Free Time Ideas 🌴</div>
+            <div class="event-desc">
+                When you have downtime, Amed is perfect for:<br>
+                • <strong>Balinese Massage:</strong> Plentiful spas near La Paloma. (~HKD 70-100 per hour).<br>
+                • <strong>Tirta Gangga Water Palace:</strong> Historic royal pools with koi fish. (30 mins scooter ride).<br>
+                • <strong>Cafe Hopping:</strong> Hit up Rimba Cafe or Rimba for amazing coffee and brunch vibes.
+            </div>
+            <div class="tags-wrapper"><div class="tag chill">🌴 Dominic's Chill</div></div>
+        </div>
+
         <!-- DAY 1 -->
-        <div class="day-header">Sun, Nov 1</div>
+        <div class="day-header">Sun, Nov 1 (Arrival)</div>
         <div class="event-card" data-type="shared">
             <div class="event-time">04:15 PM</div>
             <div class="event-title">Touchdown & Check-in</div>
-            <div class="event-desc">Flight CX783 lands at DPS. Meet the private driver for the drive to Amed. Check in at <strong>La Paloma Amed</strong> (Jl. I Ketut Natih).</div>
+            <div class="event-desc">Flight CX783 lands at DPS. Meet the pre-booked private driver for the coastal drive to Amed. Check in at <strong>La Paloma Amed</strong> (Jl. I Ketut Natih).</div>
             <div class="tags-wrapper">
-                <div class="tag shared">👥 Shared</div>
-                <div class="tag cost">💰 HKD 1,952.65 (Total Stay)</div>
+                <div class="tag transport">🚗 3 Hours Drive (Private Car)</div>
+                <div class="tag cost">💰 HKD 300 total (One way)</div>
+                <div class="tag cost">💰 HKD 1,952.65 total (AirBnb)</div>
             </div>
-        </div>
-        <div class="event-card" data-type="shared">
-            <div class="event-time">08:00 PM</div>
-            <div class="event-title">Late-Night Chill & Dinner</div>
-            <div class="event-desc">Relaxed local Balinese dinner and custom cocktails right on the street lane to unwind.</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
 
         <!-- DAY 2 -->
-        <div class="day-header">Mon, Nov 2</div>
+        <div class="day-header">Mon, Nov 2 (Dive Day 1)</div>
         <div class="event-card" data-type="sports">
-            <div class="event-time">09:00 AM</div>
-            <div class="event-title">Morning Padel</div>
-            <div class="event-desc">High-energy session at Coral Padel Amed (booked via Playtomic).</div>
+            <div class="event-time">Morning</div>
+            <div class="event-title">Japanese Shipwreck Fun Dives</div>
+            <div class="dive-intro">
+                <strong>🌊 Site Intro:</strong> A sunken steel boat lying just 15m off the Banyuning shore. The top sits beautifully at just 2m deep, cascading down a sandy slope to 12m. Covered in gorgonians and sponges, it’s an absolute playground for shallow freediving and snorkeling!
+            </div>
+            <div class="event-desc">Kick off the trip with relaxed freediving fun dives at the JP Shipwreck.</div>
             <div class="alt-option">
                 <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Sleep in, slow breakfast, or read at a beachfront cafe on Jemeluk Bay.</div>
+                <div class="event-desc">Float and snorkel right on the surface above the wreck—it's shallow enough to see everything from the top!</div>
             </div>
-            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🛵 15 Mins Scooter (from AirBnb)</div>
+                <div class="tag sports">⚡ TK's Sports</div>
+            </div>
         </div>
-        <div class="event-card" data-type="shared">
-            <div class="event-time">01:00 PM</div>
-            <div class="event-title">Coastal Lunch & Scooter Ride</div>
-            <div class="event-desc">Oceanfront lunch followed by a casual beach stroll or scooter exploration.</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
-        </div>
+        
         <div class="event-card" data-type="sports">
-            <div class="event-time">05:00 PM</div>
-            <div class="event-title">BVB at Lipah Beach</div>
-            <div class="event-desc">Daily pickup beach volleyball games on the flat black sand.</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Grab a cold Bintang at the beachfront warung directly next to the net to watch the sunset.</div>
+            <div class="event-time">Afternoon / Evening</div>
+            <div class="event-title">Land Sports Suggestions</div>
+            <div class="event-desc">Depending on your energy levels, grab the scooter and drop into a game: <br>• <strong>Padel</strong> (Coral Padel Amed)<br>• <strong>Beach Volleyball</strong> (Lipah Beach)<br>• <strong>Tennis</strong></div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🛵 5 - 10 Mins Scooter</div>
+                <div class="tag sports">⚡ TK's Sports</div>
             </div>
-            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
         </div>
 
         <!-- DAY 3 -->
-        <div class="day-header">Tue, Nov 3</div>
+        <div class="day-header">Tue, Nov 3 (Course Day 1)</div>
         <div class="event-card" data-type="sports">
             <div class="event-time">08:30 AM - 05:00 PM</div>
             <div class="event-title">Fathom Freedive: Wave 1 (Day 1)</div>
             <div class="event-desc">Classroom theory, Oximeter breath hold, confined water swimming, and first ocean session (5m-10m). Location: Fathom Freedive.</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Relax by the pool, book a Balinese massage, or chill at local cafes.</div>
-            </div>
             <div class="tags-wrapper">
-                <div class="tag sports">⚡ TK's Sports</div>
-                <div class="tag cost">💰 HKD ~2,210 (IDR 5.1M incl. Cert)</div>
+                <div class="tag transport">🛵 2-5 Mins Scooter (or Walk)</div>
+                <div class="tag cost">💰 HKD ~2,210 / pax (Course + Cert)</div>
             </div>
         </div>
 
         <!-- DAY 4 -->
-        <div class="day-header">Wed, Nov 4</div>
+        <div class="day-header">Wed, Nov 4 (Course Day 2)</div>
         <div class="event-card" data-type="sports">
             <div class="event-time">09:00 AM - 05:00 PM</div>
             <div class="event-title">Fathom Freedive: Wave 1 (Day 2)</div>
             <div class="event-desc">Lung yoga, duck-diving, open water (up to 20m), rescue simulation (6m), and final certification exam.</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Morning cooking class or exploring local Amed street shops.</div>
-            </div>
             <div class="tags-wrapper">
-                <div class="tag sports">⚡ TK's Sports</div>
+                <div class="tag transport">🛵 2-5 Mins Scooter</div>
             </div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">06:00 PM</div>
             <div class="event-title">Sunset Point Mount Agung</div>
             <div class="event-desc">Grab prime seats at a cliffside lookout and watch the sun drop directly behind Mount Agung to celebrate graduation!</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🛵 10 Mins Scooter</div>
+                <div class="tag shared">👥 Shared</div>
+            </div>
         </div>
 
         <!-- DAY 5 -->
-        <div class="day-header">Thu, Nov 5</div>
+        <div class="day-header">Thu, Nov 5 (Scuba Wreck Day)</div>
         <div class="event-card" data-type="sports">
-            <div class="event-time">08:30 AM</div>
-            <div class="event-title">Japanese Shipwreck Fun Dive</div>
-            <div class="event-desc">Head over to Banyuning for an epic dive at the JP Shipwreck (2m - 12m deep).</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Join the same boat! Snorkel directly over the shipwreck while TK dives below.</div>
+            <div class="event-time">Morning</div>
+            <div class="event-title">USAT Liberty Shipwreck (Scuba)</div>
+            <div class="dive-intro">
+                <strong>🌊 Site Intro:</strong> One of the world's most famous wrecks! A 120m American WWII cargo ship torpedoed in 1942. When Mt. Agung erupted in 1963, lava pushed the ship off the beach into the sea. It now rests on a black sand slope (4m to 30m) featuring massive swim-throughs and schools of bumphead parrotfish.
             </div>
-            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
+            <div class="event-desc">Swap out the long fins for a tank and explore Tulamben's deep history.</div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🛵 25 Mins Scooter (to Tulamben)</div>
+                <div class="tag cost">💰 HKD ~400-500 / pax (Est. 2-Tank)</div>
+            </div>
         </div>
+        
         <div class="event-card" data-type="shared">
-            <div class="event-time">01:00 PM</div>
-            <div class="event-title">Tirta Gangga & Chill</div>
-            <div class="event-desc">Explore the Water Palace or grab a long relaxing lunch together.</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
-        </div>
-        <div class="event-card" data-type="sports">
-            <div class="event-time">05:00 PM</div>
-            <div class="event-title">Final BVB Match</div>
-            <div class="event-desc">Last beach volleyball rotation at Lipah Beach.</div>
-            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
-        </div>
-        <div class="event-card" data-type="shared">
-            <div class="event-time">07:30 PM</div>
-            <div class="event-title">Premium Farewell Dinner</div>
-            <div class="event-desc">Top-tier seafood grill or acoustic live-music restaurant to close out the trip.</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
+            <div class="event-time">Afternoon & Evening</div>
+            <div class="event-title">Free Time & Farewell Dinner</div>
+            <div class="event-desc">Hit up a local spa for post-dive recovery. For dinner, head out for a premium Seafood BBQ grill to close out the trip with fresh Mahi-Mahi.</div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🛵 5-10 Mins Scooter</div>
+                <div class="tag shared">👥 Shared</div>
+            </div>
         </div>
 
         <!-- DAY 6 -->
-        <div class="day-header">Fri, Nov 6</div>
+        <div class="day-header">Fri, Nov 6 (Departure)</div>
         <div class="event-card" data-type="shared">
             <div class="event-time">09:00 AM</div>
             <div class="event-title">Final Breakfast & Pack up</div>
-            <div class="event-desc">A long, premium breakfast together before getting the gear ready.</div>
+            <div class="event-desc">Enjoy a slow morning and some Indonesian coffee before packing gear.</div>
             <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">12:00 PM</div>
             <div class="event-title">Airport Transfer</div>
-            <div class="event-desc">Check out of La Paloma and take the private transfer down south to DPS Airport.</div>
-            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
+            <div class="event-desc">Check out of La Paloma and take the private car back down south to DPS Airport.</div>
+            <div class="tags-wrapper">
+                <div class="tag transport">🚗 3 Hours Drive (Private Car)</div>
+                <div class="tag cost">💰 HKD 300 total (One way)</div>
+            </div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">04:15 PM</div>
