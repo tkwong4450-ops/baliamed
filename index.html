@@ -15,6 +15,7 @@
             --accent-coral: #F43F5E;
             --accent-shared: #10B981;
             --accent-chill: #F59E0B;
+            --cost-green: #34D399;
         }
 
         * {
@@ -34,7 +35,7 @@
 
         .app-container {
             width: 100%;
-            max-width: 480px; /* Mobile width constraint for desktop viewing */
+            max-width: 480px; 
             background-color: var(--bg-color);
             min-height: 100vh;
             position: relative;
@@ -102,11 +103,11 @@
             overflow-x: auto;
             gap: 10px;
             padding: 20px;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none; 
         }
         
         .filters::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none; 
         }
 
         .filter-btn {
@@ -185,12 +186,20 @@
             line-height: 1.5;
         }
 
+        /* Tags */
+        .tags-wrapper {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
         .tag {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             font-size: 10px;
             padding: 4px 8px;
             border-radius: 8px;
-            margin-top: 10px;
             font-weight: 800;
             text-transform: uppercase;
         }
@@ -198,6 +207,12 @@
         .tag.shared { background: rgba(16, 185, 129, 0.15); color: var(--accent-shared); }
         .tag.sports { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
         .tag.chill { background: rgba(245, 158, 11, 0.15); color: var(--accent-chill); }
+        
+        .tag.cost { 
+            background: rgba(52, 211, 153, 0.15); 
+            color: var(--cost-green); 
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
 
         /* Dominic's Options Box inside Sports Cards */
         .alt-option {
@@ -244,63 +259,37 @@
         <div class="day-header">Sun, Nov 1</div>
         <div class="event-card" data-type="shared">
             <div class="event-time">04:15 PM</div>
-            <div class="event-title">Touchdown in Bali</div>
-            <div class="event-desc">Flight CX783 lands at DPS. Meet the private driver for the coastal drive to Amed. Check in at Jl. I Ketut Natih.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="event-title">Touchdown & Check-in</div>
+            <div class="event-desc">Flight CX783 lands at DPS. Meet the private driver for the drive to Amed. Check in at <strong>La Paloma Amed</strong> (Jl. I Ketut Natih).</div>
+            <div class="tags-wrapper">
+                <div class="tag shared">👥 Shared</div>
+                <div class="tag cost">💰 HKD 1,952.65 (Total Stay)</div>
+            </div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">08:00 PM</div>
             <div class="event-title">Late-Night Chill & Dinner</div>
             <div class="event-desc">Relaxed local Balinese dinner and custom cocktails right on the street lane to unwind.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
 
         <!-- DAY 2 -->
         <div class="day-header">Mon, Nov 2</div>
         <div class="event-card" data-type="sports">
-            <div class="event-time">08:30 AM</div>
-            <div class="event-title">Freediving Discovery</div>
-            <div class="event-desc">Morning session at Apneista or Ocean Prana.</div>
+            <div class="event-time">09:00 AM</div>
+            <div class="event-title">Morning Padel</div>
+            <div class="event-desc">High-energy session at Coral Padel Amed (booked via Playtomic).</div>
             <div class="alt-option">
                 <strong>🌴 Dominic's Vibe:</strong>
                 <div class="event-desc">Sleep in, slow breakfast, or read at a beachfront cafe on Jemeluk Bay.</div>
             </div>
-            <div class="tag sports">⚡ TK's Sports</div>
+            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">01:00 PM</div>
             <div class="event-title">Coastal Lunch & Scooter Ride</div>
             <div class="event-desc">Oceanfront lunch followed by a casual beach stroll or scooter exploration.</div>
-            <div class="tag shared">👥 Shared</div>
-        </div>
-        <div class="event-card" data-type="sports">
-            <div class="event-time">05:00 PM</div>
-            <div class="event-title">Padel Drop-in Match</div>
-            <div class="event-desc">Fast-paced games at Coral Padel Amed (booked via Playtomic).</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Watch the match from the open-air cafe, or book a Balinese massage nearby.</div>
-            </div>
-            <div class="tag sports">⚡ TK's Sports</div>
-        </div>
-
-        <!-- DAY 3 -->
-        <div class="day-header">Tue, Nov 3</div>
-        <div class="event-card" data-type="sports">
-            <div class="event-time">08:30 AM</div>
-            <div class="event-title">2-Tank Scuba Dive</div>
-            <div class="event-desc">Jukung boat dive (Bunutan Reef & Jemeluk Wall) with Ocean Tree Bali.</div>
-            <div class="alt-option">
-                <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Join the boat just to snorkel over the reef, or book a morning cooking class/temple tour.</div>
-            </div>
-            <div class="tag sports">⚡ TK's Sports</div>
-        </div>
-        <div class="event-card" data-type="shared">
-            <div class="event-time">01:00 PM</div>
-            <div class="event-title">Poolside & Coconuts</div>
-            <div class="event-desc">Reconvene for lunch, fresh coconut drinks, and hanging out by the pool.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
         <div class="event-card" data-type="sports">
             <div class="event-time">05:00 PM</div>
@@ -310,57 +299,75 @@
                 <strong>🌴 Dominic's Vibe:</strong>
                 <div class="event-desc">Grab a cold Bintang at the beachfront warung directly next to the net to watch the sunset.</div>
             </div>
-            <div class="tag sports">⚡ TK's Sports</div>
+            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
+        </div>
+
+        <!-- DAY 3 -->
+        <div class="day-header">Tue, Nov 3</div>
+        <div class="event-card" data-type="sports">
+            <div class="event-time">08:30 AM - 05:00 PM</div>
+            <div class="event-title">Fathom Freedive: Wave 1 (Day 1)</div>
+            <div class="event-desc">Classroom theory, Oximeter breath hold, confined water swimming, and first ocean session (5m-10m). Location: Fathom Freedive.</div>
+            <div class="alt-option">
+                <strong>🌴 Dominic's Vibe:</strong>
+                <div class="event-desc">Relax by the pool, book a Balinese massage, or chill at local cafes.</div>
+            </div>
+            <div class="tags-wrapper">
+                <div class="tag sports">⚡ TK's Sports</div>
+                <div class="tag cost">💰 HKD ~2,210 (IDR 5.1M incl. Cert)</div>
+            </div>
         </div>
 
         <!-- DAY 4 -->
         <div class="day-header">Wed, Nov 4</div>
         <div class="event-card" data-type="sports">
-            <div class="event-time">08:00 AM</div>
-            <div class="event-title">AOW Scuba Wreck Dives</div>
-            <div class="event-desc">Deep dives at USAT Liberty Shipwreck & Boga Shipwreck in Tulamben.</div>
+            <div class="event-time">09:00 AM - 05:00 PM</div>
+            <div class="event-title">Fathom Freedive: Wave 1 (Day 2)</div>
+            <div class="event-desc">Lung yoga, duck-diving, open water (up to 20m), rescue simulation (6m), and final certification exam.</div>
             <div class="alt-option">
                 <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Relaxing pool morning or a private local home spa session.</div>
+                <div class="event-desc">Morning cooking class or exploring local Amed street shops.</div>
             </div>
-            <div class="tag sports">⚡ TK's Sports</div>
+            <div class="tags-wrapper">
+                <div class="tag sports">⚡ TK's Sports</div>
+            </div>
         </div>
         <div class="event-card" data-type="shared">
-            <div class="event-time">03:30 PM</div>
+            <div class="event-time">06:00 PM</div>
             <div class="event-title">Sunset Point Mount Agung</div>
-            <div class="event-desc">The Big Outing: Grab prime seats at a cliffside lookout and watch the sun drop directly behind Mount Agung.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="event-desc">Grab prime seats at a cliffside lookout and watch the sun drop directly behind Mount Agung to celebrate graduation!</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
 
         <!-- DAY 5 -->
-        <div class="day-header">Thu, Nov 5 (No Diving)</div>
+        <div class="day-header">Thu, Nov 5</div>
         <div class="event-card" data-type="sports">
             <div class="event-time">08:30 AM</div>
-            <div class="event-title">Morning Padel</div>
-            <div class="event-desc">High-energy session at Coral Padel.</div>
+            <div class="event-title">Japanese Shipwreck Fun Dive</div>
+            <div class="event-desc">Head over to Banyuning for an epic dive at the JP Shipwreck (2m - 12m deep).</div>
             <div class="alt-option">
                 <strong>🌴 Dominic's Vibe:</strong>
-                <div class="event-desc">Cafe-hopping or souvenir hunting along the local street lane.</div>
+                <div class="event-desc">Join the same boat! Snorkel directly over the shipwreck while TK dives below.</div>
             </div>
-            <div class="tag sports">⚡ TK's Sports</div>
+            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
         </div>
         <div class="event-card" data-type="shared">
-            <div class="event-time">11:00 AM</div>
-            <div class="event-title">Tirta Gangga & Coastal Sightseeing</div>
-            <div class="event-desc">Rent an outrigger boat for a private cruise or explore the Water Palace.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="event-time">01:00 PM</div>
+            <div class="event-title">Tirta Gangga & Chill</div>
+            <div class="event-desc">Explore the Water Palace or grab a long relaxing lunch together.</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
         <div class="event-card" data-type="sports">
             <div class="event-time">05:00 PM</div>
             <div class="event-title">Final BVB Match</div>
             <div class="event-desc">Last beach volleyball rotation at Lipah Beach.</div>
-            <div class="tag sports">⚡ TK's Sports</div>
+            <div class="tags-wrapper"><div class="tag sports">⚡ TK's Sports</div></div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">07:30 PM</div>
             <div class="event-title">Premium Farewell Dinner</div>
             <div class="event-desc">Top-tier seafood grill or acoustic live-music restaurant to close out the trip.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
 
         <!-- DAY 6 -->
@@ -369,19 +376,19 @@
             <div class="event-time">09:00 AM</div>
             <div class="event-title">Final Breakfast & Pack up</div>
             <div class="event-desc">A long, premium breakfast together before getting the gear ready.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">12:00 PM</div>
             <div class="event-title">Airport Transfer</div>
-            <div class="event-desc">Check out and take the private transfer down south to DPS Airport.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="event-desc">Check out of La Paloma and take the private transfer down south to DPS Airport.</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
         <div class="event-card" data-type="shared">
             <div class="event-time">04:15 PM</div>
             <div class="event-title">Departure</div>
             <div class="event-desc">Board Cathay Pacific flight CX784 back to Hong Kong.</div>
-            <div class="tag shared">👥 Shared</div>
+            <div class="tags-wrapper"><div class="tag shared">👥 Shared</div></div>
         </div>
 
     </div>
@@ -390,19 +397,15 @@
 <script>
     // Filtering Logic
     function filterEvents(type) {
-        // Update Buttons
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         event.target.classList.add('active');
 
-        // Filter Cards
         const cards = document.querySelectorAll('.event-card');
-        const headers = document.querySelectorAll('.day-header');
         
         cards.forEach(card => {
             if (type === 'all' || card.getAttribute('data-type') === type) {
                 card.style.display = 'block';
             } else if (type === 'chill' && card.querySelector('.alt-option')) {
-                // Show sports cards if they have a chill option for Dominic
                 card.style.display = 'block';
             } else {
                 card.style.display = 'none';
